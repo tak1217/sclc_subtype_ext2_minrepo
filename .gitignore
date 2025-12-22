@@ -1,0 +1,6 @@
+sclc_subtype_source/
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+

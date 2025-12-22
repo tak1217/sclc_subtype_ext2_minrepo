@@ -1,0 +1,8 @@
+data/
+out/
+sclc_subtype_source/
+
+*.bak
+*.backup
+*.bk
+
