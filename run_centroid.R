@@ -10,7 +10,7 @@ expr <- filter_low_expression(expr, min_mean = 0)
 expr_z <- row_zscore(expr)
 Z <- samples_x_genes(expr_z) # samples x genes
 
-scores <- score_signatures(expr_z)
+scores <- score_signatures(expr_z = expr_z, gene_sets = 'data/gene_sets.tsv') # 2025.12.22 add gene_sets
 train_labels <- assign_subtype(scores)
 
 centroids <- train_centroids(Z, train_labels)

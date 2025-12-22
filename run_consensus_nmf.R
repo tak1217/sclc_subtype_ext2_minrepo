@@ -1,3 +1,4 @@
+library("NMF") # 2025.12.22 add to trouble shooting patch2
 source("R/io.R")
 source("R/preprocess.R")
 source("R/signatures.R")
@@ -16,7 +17,7 @@ expr <- read_expression("data/expression.csv")
 expr <- filter_low_expression(expr, min_mean = 0)
 
 expr_z <- row_zscore(expr)
-scores <- score_signatures(expr_z)
+scores <- score_signatures(expr_z = expr_z, gene_sets="data/gene_sets.tsv")
 
 genes <- select_variable_genes(expr, n = 300)
 X <- samples_x_genes(expr[genes, , drop = FALSE])  # samples x genes
