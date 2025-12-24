@@ -17,7 +17,7 @@ install.packages("pheatmap")   # optional (prettier heatmap)
 ```
 
 ## Data format
-- `data/expression.csv`: **genes x samples** (row names = HGNC symbols or other IDs; see ID mapping)
+- `data/expression.csv` or `data/expression.tsv`: **genes x samples** (row names = HGNC symbols or other IDs; see ID mapping)
 - `data/metadata.csv`: optional; columns `sample`, `true_subtype` (for validation only)
 
 ## Run (RStudio)
