@@ -1,4 +1,4 @@
-# Load helpers for I/O, preprocessing, signatures, NMF, and plotting.
+library("NMF") # 2025.12.22 add to trouble shooting patch2
 source("R/io.R")
 source("R/preprocess.R")
 source("R/signatures.R")
@@ -27,7 +27,7 @@ expr <- filter_low_expression(expr, min_mean = 0)
 # Signature scoring uses row-wise z-scores per gene.
 # expr_z is genes x samples with per-gene mean=0, sd=1.
 expr_z <- row_zscore(expr)
-scores <- score_signatures(expr_z)
+scores <- score_signatures(expr_z = expr_z, gene_sets="data/gene_sets.tsv")
 
 # Select variable genes and prepare nonnegative matrix for NMF.
 # Variable genes are chosen by variance; NMF uses samples x genes.
