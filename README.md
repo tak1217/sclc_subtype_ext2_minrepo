@@ -7,6 +7,11 @@ This repo is a **minimal, internally consistent** R scaffold focused on:
 
 ## Install
 ```r
+# Before install NMF, you may need the following:
+renv::install("BiocManager")
+BiocManager::install("Biobase")
+renv::install("NMF")
+
 install.packages("NMF")
 install.packages("pheatmap")   # optional (prettier heatmap)
 ```
