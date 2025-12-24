@@ -12,7 +12,7 @@ install.packages("pheatmap")   # optional (prettier heatmap)
 ```
 
 ## Data format
-- `data/expression.csv`: **genes x samples** (row names = HGNC gene symbols)
+- `data/expression.csv`: **genes x samples** (row names = HGNC symbols or other IDs; see ID mapping)
 - `data/metadata.csv`: optional; columns `sample`, `true_subtype` (for validation only)
 
 ## Run (RStudio)
@@ -22,8 +22,20 @@ source("run_consensus_nmf.R")
 source("run_centroid.R")  # optional
 ```
 
+## ID mapping (to HGNC symbols)
+If your expression row names are not HGNC symbols, convert them first:
+```r
+source("run_id_to_hgnc.R")
+```
+This reads `data/genenames.tsv`, detects which column matches your IDs best,
+and maps only that column to `Approved symbol`. Output is:
+- `data/expression_hgnc.csv`
+
+Then use `data/expression_hgnc.csv` as your expression input (update the run scripts
+or overwrite `data/expression.csv`).
+
 ## What to edit for paper integration
-- Replace gene sets in `R/signatures.R` (`GENE_SETS`) with the paper-derived lists/modules.
+- Replace gene sets in `data/gene_sets.tsv` (or a `.gmt`) with the paper-derived lists/modules.
 - Optionally tune thresholds in `assign_subtype()` (especially for SCLC-I).
 
 ## Design choices
